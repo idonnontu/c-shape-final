@@ -13,6 +13,7 @@ Class Plate  // 創建需要輸入int第幾個盤子
 	show() : 顯現plate中的磁磚
 	GetBlocksWithColor(string)->Tuple<List<Block>, List<Block>>: 拿取Plate中的磁磚
 		//輸入要拿取的顏色 輸出<要放進PlayerPlate的花磚,掉到公共區的花磚>
+	Is_Null() //是否空，用來判定回合結束
 
 Class PublicPate 
 	inside-> List<Block> : PublicPlate(上限21)
@@ -23,6 +24,7 @@ Class PublicPate
 	GetBlocksWithColor(string)->List<Block>: 拿取PublicPlate中的磁磚
 		//輸入要拿取的顏色 輸出<要放進PlayerPlate的花磚>
 	Insert_block(List<Block>) : 新增PublicPate的磁磚，將Plate掉下來的磁磚放進公共區
+	Is_Null() //是否空，用來判定回合結束
 
 Class Row // 花磚排的每一列，創建需要輸入int第幾列
 	inside-> List<Block> : 每列有的磁磚
@@ -33,6 +35,7 @@ Class Row // 花磚排的每一列，創建需要輸入int第幾列
 	Insert_block(List<Block>)->Tuple<bool, List<Block>> : 新增Row的磁磚
 		\\輸入(磁磚list) 輸出<是否放得下, 多餘花磚>
 	show() : 顯現Row中的磁磚
+	Is_Full()->Tuple<bool, Block, List<Block>> // 輸出<是否有滿，輸出器在牆上的Block,剩下回到bag的Block>，若滿清空inside
 	clear() : 未完善
 
 class Floor_Row //地板排
@@ -41,6 +44,7 @@ class Floor_Row //地板排
 	Insert_block(List<Block>)->List<Block> : 新增地板排的磁磚
 		\\輸入(磁磚list) 輸出<多餘花磚>
 	show() : 顯現地板排中的磁磚
+	CountScore()->Tuple<Int, 回到Bag的Block> : 計算扣多少分
 
 //---------------------------公共參數-----------------------------------------------
 //袋子中的Block
